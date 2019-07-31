@@ -4,88 +4,77 @@
     <div class="wrapper">
       <div class="desktop">
         <div class="side-left">
-          <div class="header">
+          <div class="header-block">
             <h1 class="logo">Music Box</h1>
             <a href="javascript:;" class="header-btn icon-home">Home</a>
             <a href="javascript:;" class="header-btn icon-discover">Discover</a>
             <a href="javascript:;" class="header-btn icon-radio">Radio</a>
           </div>
-          <div class="library">
+          <div class="library-block">
             <span class="mark">Your Music Library</span>
             <a href="javascript:;" class="lib-btn">Recently played</a>
             <a href="javascript:;" class="lib-btn">Liked music</a>
             <a href="javascript:;" class="lib-btn">Albums</a>
             <a href="javascript:;" class="lib-btn">Singer</a>
           </div>
-          <figure class="album"></figure>
+          <figure class="album-block">
+            
+          </figure>
         </div>
-        <div class="side-center"></div>
+        <div class="side-center">
+          <div class="banner-block"></div>
+          <div class="music-block">
+            <h2>Top Song</h2>
+          </div>
+        </div>
         <div class="side-right">
           <div class="member"></div>
           <span class="mark">Your Music List</span>
-          <ul class="music-list">
+          <ul class="songlist-list">
             <li></li>
           </ul>
         </div>
       </div>
       <div class="contral">
-
+        <youtube :video-id="player.id" width="270" height="152" ref="youtube" :player-vars="youtubeset" @buffering="playing"></youtube>
       </div>
     </div>
-
-    <audio>
-      <source :src="player.src" >
-    </audio>
-    <a href="javascript:;" @click="audioPlay()">安安</a>
-
-
-
-
   </div>
 </template>
 
 <script>
+import Vue from 'vue';
+import VueYoutube from 'vue-youtube';
+Vue.use(VueYoutube);
 
 export default {
   data() {
     return {
       player: {
-        dom: null,
-        src: '',
+        id: '',
         pic: '',
         title: '',
         artist: '',
         album: '',
       },
+      youtubeset: {
+        id: '',
+        option: {
+          rel: 0,
+          fs: 1,
+          iv_load_policy: 3,
+          modestbranding: 1,
+          playsinline: 1
+        }
+      },
       music: [
         {
-          src: require('../public/music/Central_Park.mp3'),
+          id: 'w1oM3kQpXRo',
           pic: '',
-          title: 'Central Park',
-          artist: 'Quincas Moreira',
-          album: 'You Tube 音效庫',
+          title: 'Everything Has Changed',
+          artist: 'Taylor Swift',
+          album: 'Red',
         },
-        {
-          src: require('../public/music/The_End.mp3'),
-          pic: '',
-          title: 'The End',
-          artist: 'Quincas Moreira',
-          album: 'You Tube 音效庫',
-        },
-        {
-          src: require('../public/music/The_Long_Night.mp3'),
-          pic: '',
-          title: 'The Long Night',
-          artist: 'Quincas Moreira',
-          album: 'You Tube 音效庫',
-        },
-        {
-          src: require('../public/music/Write_You.mp3'),
-          pic: '',
-          title: 'Write_You',
-          artist: 'Joey Pecoraro',
-          album: 'You Tube 音效庫',
-        }
       ]
     }
   },
@@ -93,27 +82,37 @@ export default {
   components: {
   },
   mounted() {
-    this.player.dom = document.querySelector('audio');
     this.replaceAudio(0);
+    this.audioPlay();
   },
   methods: {
     audioPlay() {
-      this.player.dom.play();
+      this.$nextTick(function(){
+        this.videoPlayer.playVideo();
+      });
     },
     audioPause() {
-      this.player.dom.pause();
+      this.videoPlayer.pauseVideo();
+    },
+    playing() {
+      // this.videoPlayer.getCurrentTime();
+      console.log('aaa')
     },
     replaceAudio(index) {
-      this.player.src = this.music[index].src;
+      this.player.id = this.music[index].id;
       this.player.pic = this.music[index].pic;
       this.player.title = this.music[index].title;
       this.player.artist = this.music[index].artist;
       this.player.album = this.music[index].album;
+
+      this.youtubeset.id = this.player.id;
     }
   },
   computed: {
-    
-  }
+    videoPlayer() {
+      return this.$refs.youtube.player
+    }
+  },
 }
 </script>
 
