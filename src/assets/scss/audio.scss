@@ -1,0 +1,86 @@
+@charset "UTF-8";
+@import "./_utils.scss";
+
+.audio__title {
+    font-size: 22px;
+    font-weight: bold;
+    color: $color-black;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.audio__info {
+    font-size: 18px;
+    color: $color-gray;
+}
+
+.audio__controlbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.audio__btn {
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin: 0px 15px;
+    background: {
+        repeat: no-repeat;
+        position: center;
+        size: contain;
+    }
+
+    &.play-btn {
+        width: 35px;
+        height: 35px;
+        border: {
+            width: 1px;
+            color: $color-black;
+            style: solid;
+            radius: 100%;
+        }
+        background-image: url('../public/image/play.svg');
+        background-size: 60%;
+    }
+
+    &.prev-btn {
+        background-image: url('../public/image/previous.svg');
+    }
+
+    &.next-btn {
+        background-image: url('../public/image/next.svg');
+    }
+}
+
+.audio__progressbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span {
+        display: block;
+        font-size: 16px;
+        padding: 0px 10px;
+    }
+}
+
+.progress {
+    width: 100%;
+    height: 7px;
+    background-color: $color-gray-3;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-value {
+    height: 100%;
+    background-color: $color-mint;
+    transition: width 1s linear;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
