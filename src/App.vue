@@ -23,7 +23,7 @@
         </div>
         <div class="side-center">
           <div class="banner-block">
-            <img :src="require('../public/image/taylor-swift-ranking.png')" alt="taylor swift">
+            <img :src="require('../public/img/taylor-swift-ranking.png')" alt="taylor swift">
           </div>
           <div class="music-block">
             <h2>Top Song</h2>
@@ -114,7 +114,7 @@ export default {
       music: [
         {
           id: 'w1oM3kQpXRo',
-          pic: require('../public/image/album/taylorswift_red.png'),
+          pic: require('../public/img/album/taylorswift_red.png'),
           title: 'Everything Has Changed',
           artist: 'Taylor Swift',
           album: 'Red',
@@ -122,7 +122,7 @@ export default {
         },
         {
           id: '-CmadmM5cOk',
-          pic: require('../public/image/album/taylorswift_1989.jpg'),
+          pic: require('../public/img/album/taylorswift_1989.jpg'),
           title: 'Style',
           artist: 'Taylor Swift',
           album: '1989',
@@ -130,7 +130,7 @@ export default {
         },
         {
           id: 'e-ORhEE9VVg',
-          pic: require('../public/image/album/taylorswift_1989.jpg'),
+          pic: require('../public/img/album/taylorswift_1989.jpg'),
           title: 'Blank Space',
           artist: 'Taylor Swift',
           album: '1989',
@@ -138,7 +138,7 @@ export default {
         },
         {
           id: 'KINfQbfZwik',
-          pic: require('../public/image/album/onerepublic_native.jpg'),
+          pic: require('../public/img/album/onerepublic_native.jpg'),
           title: 'I Lived',
           artist: 'One Republic',
           album: 'Native',

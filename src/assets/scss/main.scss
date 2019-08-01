@@ -114,7 +114,7 @@ h2 {
         margin-right: 10px;
         display: inline-block;
         vertical-align: top;
-        background: url('../public/image/LOGO.svg') no-repeat center/contain;
+        background: url('../public/img/LOGO.svg') no-repeat center/contain;
     }
 }
 
@@ -153,19 +153,19 @@ h2 {
 
     &.icon-home {
         &::before {
-            background-image: url('../public/image/home.svg');
+            background-image: url('../public/img/home.svg');
         }
     }
 
     &.icon-discover {
         &::before {
-            background-image: url('../public/image/discover.svg');
+            background-image: url('../public/img/discover.svg');
         }
     }
 
     &.icon-radio {
         &::before {
-            background-image: url('../public/image/radio.svg');
+            background-image: url('../public/img/radio.svg');
         }
     }
 }

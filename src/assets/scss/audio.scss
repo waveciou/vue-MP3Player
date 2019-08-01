@@ -43,16 +43,16 @@
             style: solid;
             radius: 100%;
         }
-        background-image: url('../public/image/play.svg');
+        background-image: url('../public/img/play.svg');
         background-size: 60%;
     }
 
     &.prev-btn {
-        background-image: url('../public/image/previous.svg');
+        background-image: url('../public/img/previous.svg');
     }
 
     &.next-btn {
-        background-image: url('../public/image/next.svg');
+        background-image: url('../public/img/next.svg');
     }
 }
 
