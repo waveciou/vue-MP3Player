@@ -8,7 +8,7 @@
 
 ## DESIGN
 
-![pomodoro](https://waveciou.github.io/vue-mp3player/design.jpg "mp3player")
+![mp3player](https://waveciou.github.io/vue-mp3player/design.jpg "mp3player")
 
 - [設計稿連結](https://challenge.thef2e.com/user/1871?schedule=3148#works-3148)
 
