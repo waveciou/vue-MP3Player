@@ -19,6 +19,12 @@
         font-size: 18px;
         color: $color-gray;
     }
+
+    &.current, &:hover{
+        span {
+            color: $color-mint;
+        }
+    }
 }
 
 .ms__info {
@@ -65,5 +71,6 @@
 
 .ms__duration {
     width: 70px;
+    padding-right: 10px;
     text-align: right;
 }
