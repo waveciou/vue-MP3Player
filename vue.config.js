@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: '/vue-mp3player/'
+    publicPath: '/vue-mp3player/dist/'
 }
