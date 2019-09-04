@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-
         <div class="wrapper">
             <div class="desktop">
                 <div class="side-left">
@@ -59,38 +58,14 @@
                     </div>
                 </div>
             </div>
-            <div class="contral">
-                <div class="side-left">
-                    <div class="audio__title">{{ player.title }}</div>
-                    <div class="audio__info">{{ player.artist }}, {{ player.album }}</div>
-                </div>
-                <div class="side-center">
-                    <div class="audio__controlbar">
-                        <a href="javascript:;" class="audio__btn prev-btn" @click.prevent="audioPlayerPrev"></a>
-                        <a href="javascript:;" class="audio__btn play-btn"
-                            :class="{'icon-pause': player.isPause === false}" @click.prevent="audioPlayerCtrl"></a>
-                        <a href="javascript:;" class="audio__btn next-btn" @click.prevent="audioPlayerNext"></a>
-                    </div>
-                    <div class="audio__progressbar">
-                        <span class="current-time">{{ getTimeText(player.time) }}</span>
-                        <div class="progress">
-                            <div class="progress-value" :style="`width:${getPercent}%;`"></div>
-                        </div>
-                        <span class="duration-time">{{ getTimeText(player.duration) }}</span>
-                    </div>
-                </div>
-                <div class="side-right">
-                    <div class="volume">
-                        <input class="volume-range" type="range" v-model="player.volume" @mousemove="audioPlayerVolume">
-                    </div>
-                </div>
-            </div>
+            <Player :player="player" @audioPlayerCtrl="audioPlayerCtrl" @audioPlayerNext="audioPlayerNext" @audioPlayerPrev="audioPlayerPrev" @audioPlayerVolume="audioPlayerVolume" />
         </div>
     </div>
 </template>
 
 <script>
     import Vue from 'vue';
+    import Player from '@/components/player.vue';
     import VueYoutube from 'vue-youtube';
     Vue.use(VueYoutube);
 
@@ -173,7 +148,9 @@
             }
         },
         name: 'app',
-        components: {},
+        components: {
+            Player
+        },
         mounted() {
             this.replaceAudio(0);
         },
@@ -233,6 +210,12 @@
                 // 清除播放器計時器
                 clearInterval(this.videoTimer);
             },
+            audioPlayerChoose(index) {
+                // 選擇播放哪一首
+                this.audioStop();
+                this.replaceAudio(index);
+                this.audioPlay();
+            },
             audioPlayerCtrl() {
                 // 播放器播放與暫停
                 this.player.isPause === true ? this.audioPlay() : this.audioPause();
@@ -257,12 +240,6 @@
                 this.replaceAudio(index);
                 this.audioPlay();
             },
-            audioPlayerChoose(index) {
-                // 選擇播放哪一首
-                this.audioStop();
-                this.replaceAudio(index);
-                this.audioPlay();
-            },
             audioPlayerVolume() {
                 // 聲音調整
                 let value = parseInt(this.player.volume);
@@ -283,16 +260,6 @@
             videoPlayer() {
                 return this.$refs.youtube.player
             },
-            getPercent() {
-                let percent = Math.round((this.player.time / this.player.duration * 100) * 1000) / 1000;
-                if (percent >= 100) {
-                    percent = 100
-                }
-                if (percent <= 0) {
-                    percent = 0
-                }
-                return percent;
-            },
         },
     }
 </script>
@@ -301,5 +268,4 @@
     @import './assets/scss/_utils.scss';
     @import './assets/scss/main.scss';
     @import './assets/scss/musiclist.scss';
-    @import './assets/scss/audio.scss';
 </style>
