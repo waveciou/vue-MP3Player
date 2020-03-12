@@ -4,7 +4,11 @@
 
 ## DEMO
 
-- [網站連結](https://waveciou.github.io/vue-mp3player/dist/)
+[網站連結](https://waveciou.github.io/vue-mp3player/dist/)
+
+一個簡易的音樂播放器實作，內容包含：
+
+- 運用 YouTube IFrame Player API 實現其功能
 
 ## DESIGN
 
